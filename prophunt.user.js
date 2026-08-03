@@ -13,7 +13,7 @@
 (function() {
     'use strict';
 
-    var MORPH_COOLDOWN = 1; // 3 second cooldown to avoid chat spam
+    var MORPH_COOLDOWN = 2000; // 3 second cooldown to avoid chat spam
     var lastMorphTime = 0;
 
     // --- ENCRYPTION & DECRYPTION HELPERS (Base64 + Salt) ---
@@ -255,7 +255,7 @@
                 // Emits warning via socket exclusively to team chat
                 tagpro.socket.emit('chat', {
                     message: 'Prop morph on cooldown! Wait ' + remainingSec + 's.',
-                    toAll: false
+                    to: "team"
                 });
                 return;
             }
